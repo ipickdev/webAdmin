@@ -1,0 +1,53 @@
+.page {
+  &.home{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    place-content: center;
+    align-items: center;
+    form {
+      display: flex;
+      width: 250px;
+      height: 250px;
+      flex-direction: column;
+      div {
+        display: flex;
+        place-content: space-evenly;
+        padding: 5px;
+        input {
+          padding: 8px;
+          &[type=text], &[type=password]{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  &.new-driver {
+    display: flex;
+    place-content: center;
+    align-items: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      width:250px;
+      span {
+        display: block;
+        padding:10px;
+        input, textarea {
+          width: 100%;
+          padding: 8px;
+          border-radius: 4px;
+          box-shadow: var(--soft-border);
+          background-color: #fff;
+          color: #333;
+          border: 0;
+        }
+        button {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
