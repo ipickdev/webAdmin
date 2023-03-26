@@ -1,12 +1,11 @@
-import KeyValuePairList from "../models/key-value-pairs.interface";
-
 export default class LocalStorageService{
   constructor() {
   }
 
+  // gets a localStorage  variable by key
   getData(key: string = 'userData'): any {
     const localData = localStorage.getItem(key) ?? '';
-    if (localData === '') return false;
+    if (localData === '') return undefined;
     try {
       return JSON.parse(localData);
     } catch (e) {
@@ -14,11 +13,13 @@ export default class LocalStorageService{
     }
   }
 
+  // saves a localStorage variable
   saveData(key: string = 'userData', data: any): void {
     const d = typeof data === 'string' ? data : JSON.stringify(data);
     localStorage.setItem(key, d);
   }
 
+  // clears the localStorage
   clearData(): void {
     localStorage.clear();
   }

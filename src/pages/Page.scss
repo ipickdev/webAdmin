@@ -1,19 +1,30 @@
 .page {
+  padding-top:60px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  background-color: #fff;
   &.home{
     display: flex;
-    height: 100%;
+    // height: 100%;
     width: 100%;
     place-content: center;
     align-items: center;
+    &>div{
+      background-color: var(--primary-color);
+      padding: 1rem;
+      border-radius: 4px;
+    }
     form {
       display: flex;
-      width: 250px;
+      width: 350px;
       height: 250px;
       flex-direction: column;
       div {
         display: flex;
         place-content: space-evenly;
-        padding: 5px;
+        padding: 1rem 5px;
         input {
           padding: 8px;
           &[type=text], &[type=password]{
@@ -48,6 +59,24 @@
           height: 100%;
         }
       }
+    }
+  }
+
+  &.stats {
+    background-color: #fff;
+    width: 1080px;
+    place-content: center;
+    padding-top: 30px;
+
+    [id^=canvasContainer] {
+      margin: auto;
+    }
+  }
+
+  &.config {
+    background-color: #fff;
+    .pane {
+      background-color: var(--primary-color);
     }
   }
 }

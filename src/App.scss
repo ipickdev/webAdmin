@@ -1,4 +1,35 @@
 
+#basic-menu {
+  --soft-border: #008000 0px 3px 1px -2px, #008000 0px 2px 2px 0px, #008000 0px 1px 5px 0px;
+  --primary-color: #008000;
+  --secondary-color: #333;
+  // background-color: var(--primary-color);
+  color: var(--secondary-color);
+  ul {
+    background-color: #008000;
+    box-shadow: var(--soft-border);
+  }
+  li {
+    border-radius: 4px;
+    background-color: #008000;
+    color: #fff;
+    border: 0;
+    padding: 0.6rem 1rem;
+
+  }
+}
+.rdt_Table {
+
+  .rdt_TableRow, .rdt_TableHeadRow {
+    // &:first-of-type(){
+    //   padding: 0 1rem;
+    // }
+    .rdt_TableCell, .rdt_TableCol {
+      text-align: left;
+      padding: 0 1rem;
+    }
+  }
+}
 
 #root {
   margin: 0 auto;
@@ -6,7 +37,129 @@
   height: 100vh;
   width: 100%;
   position: relative;
-  --soft-border: #00000033 0px 3px 1px -2px, #00000024 0px 2px 2px 0px, #0000001f 0px 1px 5px 0px;
+  --soft-border: #008000 0px 3px 1px -2px, #008000 0px 2px 2px 0px, #008000 0px 1px 5px 0px;
+  --soft-border2: #333 0px 3px 1px -2px, #333 0px 2px 2px 0px, #333 0px 1px 5px 0px;
+  --primary-color: #008000;
+  --secondary-color: #333;
+  // background-color: var(--primary-color);
+  color: var(--secondary-color);
+
+  @font-face {
+    font-family: 'proximaNova';
+    src: url('/public/assets/fonts/ProximaNova-Regular.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'proximaNovaXb';
+    src: url("/assets/fonts/Proxima\ Nova\ Extrabold.otf") format('opentype');
+  }
+  @font-face {
+    font-family: 'ttcommons';
+    src: url('/assets/fonts/TT\ Commons\ Medium.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'ttcommonsXb';
+    src: url('/assets/fonts/TT\ Commons\ ExtraBold.otf') format('opentype');
+  }
+  input {
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 4px;
+    color:#333;
+    // font-family: 'proximaNova';
+  }
+
+  input, a, b, p, label, h1,h2,h3,h4,h5,h6,h7,span,div {
+    color: var(--secondary-color);
+    // font-family: 'ttcommons';
+  }
+
+  input, textarea {
+    border-radius: 4px;
+    box-shadow: var(--soft-border);
+    color: var(--secondary-color);
+    background-color: #fff;
+    border: 0;
+    padding: 0.6rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  button {
+    border-radius: 4px;
+    box-shadow: var(--soft-border);
+    margin: 0.2rem;
+    font-weight: bolder;
+  }
+
+  span.controls {
+    input {
+      margin: 0.5rem 1rem;
+    }
+  }
+
+  span.counts {
+    display: block;
+    width: 100%;
+
+    &.today {
+      .statComponent {
+        width: 230px;
+        background-color: #008000;
+        .graphic {
+          border: 2px solid var(--secondary-color);
+        }
+        .texts {
+          label, input {
+            color: #fff;      
+          }
+        }
+      }
+      padding: 0 0 4em;
+    }
+    .statComponent {
+      display: inline-block;
+      width: 200px;
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: var(--secondary-color) 0px 3px 1px -2px, var(--secondary-color) 0px 2px 2px 0px, var(--secondary-color) 0px 1px 5px 0px;
+      margin: 0 1rem;
+      &>span {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        .graphic {
+          border: 2px solid var(--primary-color);
+          border-radius: 100%;
+          flex: 2 0 80px;
+          height: 80px;
+          display: inline;
+          position: relative;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+          }
+        }
+        .texts {
+          flex: 1 2 auto;
+          min-width: 0;
+          label {
+            color: var(--primary-color);      
+            text-align: right;
+          }
+          input {
+            text-align: right;
+            background-color: transparent;
+            border: 0;
+            font-size: 1.4rem;
+            font-weight: bolder;
+            width: 80px;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 .logo {
@@ -23,12 +176,16 @@
 }
 
 .App {
+  --primary-color: #008000;
+  --secondary-color: #333;
   padding: 2rem;
   height: 100%;
   width: 100%;
   position: relative;
   margin:0;
   padding:0;
+  background-color: #fff; // var(--primary-color);
+  // display: table;
 }
 
 @keyframes logo-spin {

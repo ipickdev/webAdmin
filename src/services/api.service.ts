@@ -5,12 +5,14 @@ export default class ApiService{
   constructor() {
   }
 
-  async get(url: string, params: KeyValuePairList = []): Promise<any[]>{
+  /* Performs get requests to the server */
+  async get(url: string, params: KeyValuePairList = []): Promise<any>{
     const queryString = Object.keys(params).map(key => key + '=' + params[key]).join('&');
     const data = (await fetch(`${this.apiEndpoint}/${url}?${queryString}`)).json();
     return data;
   }
 
+  /* Performs post requests to the server */
   async post(url: string, headers: KeyValuePairList = {}, body: KeyValuePairList = {}): Promise<any>{
     const data = (await fetch(`${this.apiEndpoint}/${url}`, 
       { method: 'POST',

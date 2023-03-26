@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { makeid } from '../App';
 import ApiService from '../services/api.service';
 import './Page.scss';
+
+/**
+ * This is the page for creating a new rider
+ */
 export const NewRider = () => {
   const [snack, setSnack] = useState({
     open: false,
@@ -12,6 +16,8 @@ export const NewRider = () => {
   });
   const nav = useNavigate();
   const apiService = new ApiService();
+
+  // submit the form data to the server for creating a new rider
   const handleSub = async (e: any) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -20,7 +26,7 @@ export const NewRider = () => {
       if (value === '') return;
       object[key] = value;
     });
-    if (object.password !== object.conpass) {
+    if (object.password !== object.conpass) {// passwords do not match
       setSnack({
         open: true,
         msg: 'Passwords do not match!',
@@ -29,7 +35,7 @@ export const NewRider = () => {
 
       return;
     }
-    const exst = await apiService.post('auth/dupCheck', {}, { mobnum: object.mobnum.slice(-10) });
+    const exst = await apiService.post('auth/dupCheck', {}, { mobnum: object.mobnum.slice(-10) });  // check for duplicate data
     if(exst?.error) {
       setSnack({
         open: true,
@@ -39,10 +45,10 @@ export const NewRider = () => {
 
       return;
     }
-    object.id = await getMeAnID();
+    object.id = await getMeAnID();  // assign an id to this user
     object.disabled = false;
     delete object.conpass;
-    const req = await apiService.post('auth/updateUser', {}, object);
+    const req = await apiService.post('auth/web/updateUser', {}, object); // send the data to the server
     if (req?.error) {
       setSnack({
         open: true,
@@ -55,10 +61,11 @@ export const NewRider = () => {
         open: true,
         mode: 'success'
       })
-      nav('/reg');
+      nav('/rid');  // navigate to the riders page
     }
   }
 
+  // generates an id for the user
   const getMeAnID = async () => {
     let id, testCollision;
     do {
@@ -68,10 +75,12 @@ export const NewRider = () => {
     return id;
   }
 
+  // close the prompt
   const handleClose = () => {
     setSnack({...snack, open: false});
   }
 
+  // navigate to the login page if the user is not logged
   useEffect(() => {
     if (localStorage.logged === 'false') {
       nav('/');
@@ -123,7 +132,8 @@ export const NewRider = () => {
         <span className="item">
           <Button color='success' variant="contained" type='submit'>Create User</Button>
         </span>
-        {/* <input type="hidden" name="id" value={makeid(10)}/> */}
+        <input type="hidden" name="type" value="rider"/>
+        <input type="hidden" name="disabled" value="false"/>
       </form>
     </section>
   )

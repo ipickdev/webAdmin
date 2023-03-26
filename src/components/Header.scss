@@ -7,6 +7,8 @@ div.header {
   width: 100%;
   background-color: white;
   align-items: center;
+  box-shadow: var(--soft-border);
+  z-index: 3;
   a {
     display: inline-flex;
     padding: 5px;
